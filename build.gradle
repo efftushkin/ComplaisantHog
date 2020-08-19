@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'com.efftushkin.app'
+version '1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.13'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.8.RELEASE'
+}
