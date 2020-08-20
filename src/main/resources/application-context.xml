@@ -29,4 +29,12 @@
         <constructor-arg name="workerService" ref="workerService"/>
         <constructor-arg name="taskService" ref="taskService"/>
     </bean>
+
+    <bean id="demoPreparator" class="com.efftushkin.app.DemoPreparator" init-method="prepareDemoData">
+        <constructor-arg name="workerService" ref="workerService"/>
+        <constructor-arg name="taskService" ref="taskService"/>
+        <constructor-arg name="assignService" ref="assignService"/>
+        <constructor-arg name="reportGenerationService" ref="reportGenerationService"/>
+        <constructor-arg name="reportView" ref="reportView"/>
+    </bean>
 </beans>
