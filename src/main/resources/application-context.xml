@@ -3,5 +3,30 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="idGenerator" class="com.efftushkin.app.service.IdGeneratorImpl"/>
 
+    <bean id="reportView" class="com.efftushkin.app.view.FormattedConsoleReportView"/>
+
+    <bean id="workerRepository" class="com.efftushkin.app.repository.MemoryWorkerRepository"/>
+
+    <bean id="taskRepository" class="com.efftushkin.app.repository.MemoryTaskRepository"/>
+
+    <bean id="workerService" class="com.efftushkin.app.service.WorkerServiceImpl">
+        <constructor-arg name="idGenerator" ref="idGenerator"/>
+        <constructor-arg name="workerRepository" ref="workerRepository"/>
+    </bean>
+
+    <bean id="taskService" class="com.efftushkin.app.service.TaskServiceImpl">
+        <constructor-arg name="idGenerator" ref="idGenerator"/>
+        <constructor-arg name="taskRepository" ref="taskRepository"/>
+    </bean>
+
+    <bean id="assignService" class="com.efftushkin.app.service.AssignServiceImpl">
+        <constructor-arg name="taskService" ref="taskService"/>
+    </bean>
+
+    <bean id="reportGenerationService" class="com.efftushkin.app.service.ReportGenerationServiceImpl">
+        <constructor-arg name="workerService" ref="workerService"/>
+        <constructor-arg name="taskService" ref="taskService"/>
+    </bean>
 </beans>

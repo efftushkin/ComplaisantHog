@@ -9,13 +9,12 @@ import java.time.Duration;
 import java.util.List;
 
 public class ReportGenerationServiceImpl implements ReportGenerationService {
-    private TaskService taskService;
     private WorkerService workerService;
+    private TaskService taskService;
 
-    public ReportGenerationServiceImpl(TaskService taskService,
-                                       WorkerService workerService) {
-        this.taskService = taskService;
+    public ReportGenerationServiceImpl(WorkerService workerService, TaskService taskService) {
         this.workerService = workerService;
+        this.taskService = taskService;
     }
 
     @Override

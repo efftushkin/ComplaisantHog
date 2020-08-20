@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TaskServiceImpl implements TaskService {
-    private IdGenerator idGenerator = new IdGeneratorImpl();//must be singleton
+    private IdGenerator idGenerator;
     private TaskRepository taskRepository;
 
-    public TaskServiceImpl(TaskRepository taskRepository) {
+    public TaskServiceImpl(IdGenerator idGenerator, TaskRepository taskRepository) {
+        this.idGenerator = idGenerator;
         this.taskRepository = taskRepository;
     }
 

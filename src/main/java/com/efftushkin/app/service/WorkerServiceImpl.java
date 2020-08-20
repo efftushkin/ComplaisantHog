@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class WorkerServiceImpl implements WorkerService {
-    private IdGenerator idGenerator = new IdGeneratorImpl();
+    private IdGenerator idGenerator;
     private WorkerRepository workerRepository;
 
-    public WorkerServiceImpl(WorkerRepository workerRepository) {
+    public WorkerServiceImpl(IdGenerator idGenerator, WorkerRepository workerRepository) {
+        this.idGenerator = idGenerator;
         this.workerRepository = workerRepository;
     }
 
@@ -33,11 +34,8 @@ public class WorkerServiceImpl implements WorkerService {
                         && wor.getLastName().equals(lastName))
                 .findFirst();
 
-        if (worker.isPresent()) {
-            return worker.get();
-        }
+        return worker.orElse(null);
 
-        return null;
     }
 
     @Override
