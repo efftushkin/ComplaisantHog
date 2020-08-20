@@ -30,7 +30,7 @@
         <constructor-arg name="taskService" ref="taskService"/>
     </bean>
 
-    <bean id="demoPreparator" class="com.efftushkin.app.DemoPreparator" init-method="prepareDemoData">
+    <bean id="demoPreparator" class="com.efftushkin.app.DemoPreparator">
         <constructor-arg name="workerService" ref="workerService"/>
         <constructor-arg name="taskService" ref="taskService"/>
         <constructor-arg name="assignService" ref="assignService"/>

@@ -8,12 +8,14 @@ import com.efftushkin.app.service.ReportGenerationService;
 import com.efftushkin.app.service.TaskService;
 import com.efftushkin.app.service.WorkerService;
 import com.efftushkin.app.view.ReportView;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class DemoPreparator {
+public class DemoPreparator implements ApplicationListener<ContextRefreshedEvent> {
     private final WorkerService workerService;
     private final TaskService taskService;
     private final AssignService assignService;
@@ -79,5 +81,10 @@ public class DemoPreparator {
                 LocalDateTime.of(2017, 2, 19, 8, 0),
                 LocalDateTime.of(2017, 2, 19, 18, 0),
                 BigDecimal.valueOf(801.0));
+    }
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        prepareDemoData();
     }
 }
