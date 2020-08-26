@@ -2,14 +2,18 @@ package com.efftushkin.app.service;
 
 import com.efftushkin.app.model.Worker;
 import com.efftushkin.app.repository.WorkerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class WorkerServiceImpl implements WorkerService {
     private IdGenerator idGenerator;
     private WorkerRepository workerRepository;
 
+    @Autowired
     public WorkerServiceImpl(IdGenerator idGenerator, WorkerRepository workerRepository) {
         this.idGenerator = idGenerator;
         this.workerRepository = workerRepository;

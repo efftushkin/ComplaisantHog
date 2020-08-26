@@ -2,10 +2,14 @@ package com.efftushkin.app.service;
 
 import com.efftushkin.app.model.Task;
 import com.efftushkin.app.model.Worker;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AssignServiceImpl implements AssignService {
     private TaskService taskService;
 
+    @Autowired
     public AssignServiceImpl(TaskService taskService) {
         this.taskService = taskService;
     }

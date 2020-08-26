@@ -3,15 +3,19 @@ package com.efftushkin.app.service;
 import com.efftushkin.app.model.Report;
 import com.efftushkin.app.model.Task;
 import com.efftushkin.app.model.Worker;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 
+@Service
 public class ReportGenerationServiceImpl implements ReportGenerationService {
     private WorkerService workerService;
     private TaskService taskService;
 
+    @Autowired
     public ReportGenerationServiceImpl(WorkerService workerService, TaskService taskService) {
         this.workerService = workerService;
         this.taskService = taskService;
